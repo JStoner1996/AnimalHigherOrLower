@@ -1,0 +1,18 @@
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+  /* box-shadow: 10px 10px 10px black; */
+  margin:auto;
+  display: inline-block;
+}
+
+#card-hover:hover{
+  background-color: aqua;
+}
+
+
+
+h1 {
+  text-align: center;
+}
