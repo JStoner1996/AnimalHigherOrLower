@@ -1,9 +1,11 @@
+import { clear } from "@testing-library/user-event/dist/clear";
 import React, { useCallback, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-const lifespans = [];
-export const names = [];
 
 export default function RandomAnimal() {
+  const lifespans = [];
+  const names = [];
+
   const [animals, setAnimal] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useLocalStorage("highScore", 0);
@@ -56,13 +58,29 @@ export default function RandomAnimal() {
   animals.map((animal, id) => (lifespans[id] = parseInt(animal.lifespan)));
   animals.map((animal, id) => (names[id] = animal.name));
 
+  const bool = !(score === 0 && highScore !== 0);
+
   // console.log(lifespan);
 
   if (animals) {
     return (
       <div className="container-fluid justify-content-center" id="AnimalInfo">
-        <h2 className="mx-auto text-center"> Score: {score} </h2>
-        <h4 className="mx-auto text-center"> High Score: {highScore}</h4>
+        <div className="row d-flex flex-wrap text-center p-2">
+          <div className="col-md-12">
+            <h2 className="mx-auto"> Score: {score} </h2>
+            <h4 className="mx-auto"> High Score: {highScore}</h4>
+            <button
+              type="button"
+              className="btn btn-success btn-block"
+              onClick={() => {
+                setHighScore(0);
+              }}
+              disabled={bool}
+            >
+              Reset High Score
+            </button>
+          </div>
+        </div>
 
         {animals.map((animal, id) => (
           <div key={id}>
@@ -76,10 +94,12 @@ export default function RandomAnimal() {
                     {animal.name}
                   </h5>
                   <div className="card-body">
-                    <div className="row">
-                      <div className="col-md-6" id="AnimalInfo">
+                    <div
+                      className="row d-flex flex-wrap align-items-center"
+                      id="AnimalInfo"
+                    >
+                      <div className="col-md-6">
                         <ul className="card-text">
-    
                           <li>Type: {animal.animal_type}</li>
                           <li>Active Time: {animal.active_time}</li>
                           <li>
@@ -99,7 +119,6 @@ export default function RandomAnimal() {
                           <li>Geological Range: {animal.geo_range}</li>
                         </ul>
                       </div>
-          
                       <div className="col-md-6" id="AnimalImage">
                         <img
                           alt={animal.name}

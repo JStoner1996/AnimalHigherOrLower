@@ -1,19 +1,27 @@
 img {
-  max-height: 15vw;
+  max-height: 20vw;
   min-height: 125px;
-  /* vertical-align: middle;
-   box-shadow: 10px 10px 10px black; 
-  margin:auto;
-  position: absolute;
-  vertical-align: middle; */
-} 
 
-.card-header:hover{
+  max-width: 20vw;
+  min-width: 125px;
+  margin: auto;
+  position: relative;
+}
+
+.card-header:hover {
   background-color: rgb(0, 255, 42);
 }
 
-#AnimalInfo{
-  width:60vw;
+#AnimalInfo {
+  width: 70vw;
+}
+
+#activeBtn {
+  background-color: green;
+}
+
+#inactiveBtn {
+  background-color: red;
 }
 
 h1 {
@@ -22,20 +30,18 @@ h1 {
 
 li {
   list-style: none;
-  line-height: 2.6rem;
-  vertical-align: middle;
+  line-height: 2rem;
 }
 
 @media (max-width: 1149px) {
-  #AnimalImage{
+  #AnimalImage {
     display: none;
   }
 
-
-  li{
+  li {
     line-height: 1.5rem;
   }
-  ul{
+  ul {
     text-align: center;
   }
 }
